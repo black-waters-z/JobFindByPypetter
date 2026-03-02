@@ -2,34 +2,6 @@ import asyncio
 from typing import Optional
 from search_manage.base import baseManage
 
-cookies = {
-    "XSRF-TOKEN": "EmPmmBJtTJWQHP0KxJXipw",
-    "__gc_id": "5f41a2281d6e42be9465b2e844a29199",
-    "__uuid": "1772362829230.61",
-    "__sessionId": "1772362829239.33",
-    "Hm_lvt_a2647413544f5a04f00da7eee0d5e200": "1772362829",
-    "HMACCOUNT": "AA3CE71C2045380C",
-    "_ga": "GA1.1.783495311.1772362830",
-    "UniqueKey": "d75fcf66df2ca8287ecd4408bb1e9b04",
-    "liepin_login_valid": "0",
-    "lt_auth": "veoNaHFRylXw4neI3TZXt68b2tyvATnO9Ctf10tWg9a1WfO34P%2FrRQ%2BEprEH%2FCoIq0ggI6ozMLf5N%2Bv4y3tP40YX%2BlGnlpyuvPuk0HYCUedgHuyflMXuqsjQQ5wtrXo6ykpgn2siwUnO",
-    "access_system": "C",
-    "user_roles": "0",
-    "user_photo": "5f8fa3bddfb13a7dee343d7608u.png",
-    "user_name": "%E5%BC%A0%E6%82%A6",
-    "need_bind_tel": "false",
-    "new_user": "false",
-    "c_flag": "f7fb0ba95aa1ca8135761d0fb290175d",
-    "inited_user": "7467ac3f78fc40d65a3f2e96e34e0714",
-    "_ga_54YTJKWN86": "GS2.1.s1772362830$o1$g1$t1772362859$j31$l0$h0",
-    "hpo_role-sec_project": "sec_project_liepin",
-    "hpo_sec_tenant": "0",
-    "imId_0": "160127a739032aceccb8fdb22ade775b",
-    "imClientId_0": "160127a739032acec5975b5fa583ffc7",
-    "Hm_lpvt_a2647413544f5a04f00da7eee0d5e200": "1772362888",
-    "__session_seq": "6",
-    "__tlg_event_seq": "27"
-}
 domain = ".liepin.com"
 
 USER_AGENTS = [
