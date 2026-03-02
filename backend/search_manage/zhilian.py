@@ -1,8 +1,30 @@
 import asyncio
 from typing import Optional
+
+from config import _get_config_path
 from search_manage.base import baseManage
+import json
+import os
+import sys
 
 domain = ".zhaopin.com"
+
+
+async def _load_config() -> dict:
+    path = _get_config_path()
+    if not os.path.exists(path):
+        print("未找到配置文件")
+        return {"cookies": None}
+    try:
+        with open(path, "r", encoding="utf-8-sig") as f:
+            print("已找到配置文件", path)
+            data = json.load(f) or {}
+            # print(data)
+    except Exception as e:
+        print("配置文件格式错误",e)
+        return {"cookies": None}
+    cookies = data.get("zhilian_cookie") or None
+    return {"cookies": cookies}
 
 
 class ZhiLian(baseManage):
@@ -33,6 +55,7 @@ class ZhiLian(baseManage):
             print("只有一个标签页，不执行关闭操作")
 
     async def main(self):
+        cookies = (await _load_config()).get("cookies")
         await self.setBrowser()
         cookiesSet = [
             {"name": key, "value": value, "domain": domain}
@@ -47,7 +70,7 @@ class ZhiLian(baseManage):
 
 if __name__ == "__main__":
     zhilian = ZhiLian(r"C:\Program Files\Google\Chrome\Application\chrome.exe", "前端", 0)
-    try:
-        asyncio.get_event_loop().run_until_complete(zhilian.main())
-    except Exception as e:
-        print("任务已停止",e)
+    # try:
+    asyncio.get_event_loop().run_until_complete(zhilian.main())
+    # except Exception as e:
+    #     print("任务已停止", e)

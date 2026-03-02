@@ -1,6 +1,9 @@
 import asyncio
 from typing import Optional
+from config import _get_config_path
 from search_manage.base import baseManage
+import json
+import os
 
 domain = ".liepin.com"
 
@@ -9,6 +12,23 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 ]
+
+
+async def _load_config() -> dict:
+    path = _get_config_path()
+    if not os.path.exists(path):
+        print("未找到配置文件")
+        return {"cookies": None}
+    try:
+        with open(path, "r", encoding="utf-8-sig") as f:
+            print("已找到配置文件", path)
+            data = json.load(f) or {}
+            # print(data)
+    except Exception as e:
+        print("配置文件格式错误", e)
+        return {"cookies": None}
+    cookies = data.get("liepin_cookie") or None
+    return {"cookies": cookies}
 
 
 class LiepinSearch(baseManage):
@@ -126,6 +146,7 @@ class LiepinSearch(baseManage):
         await self.page.close()
 
     async def main(self):
+        cookies = (await _load_config())["cookies"]
         await self.setBrowser()
         cookiesSet = [
             {"name": key, "value": value, "domain": domain}
@@ -143,7 +164,6 @@ class LiepinSearch(baseManage):
 
         await self.page.close()
         await self.browser.close()
-
 
 
 if __name__ == "__main__":
