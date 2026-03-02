@@ -1,0 +1,96 @@
+# Python相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv
+.env
+
+# IDE相关
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 配置文件（包含敏感信息）
+config.json
+
+# 编译文件和构建产物
+*.spec
+*.exe
+*.msi
+
+# 临时文件
+*.tmp
+*.temp
+
+# 测试相关
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js/Electron相关（如果前端也在这个仓库）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# 打包文件
+*.asar
+*.app
+*.dmg
+*.deb
+*.rpm
+*.snap
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 媒体文件（大的二进制文件）
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.avi
+
+# 其他可能的敏感文件
+.env.local
+.env.*.local
+secrets.json
+credentials.json

@@ -1,0 +1,51 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build",
+    "start": "electron .",
+    "dist": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "@vue/runtime-dom": "^3.5.29",
+    "concurrently": "^9.0.0",
+    "electron": "28.3.3",
+    "electron-builder": "^24.13.3",
+    "sass-embedded": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.0",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.worksearch.app",
+    "productName": "WorkSearch",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend/dist/backend",
+        "to": "backend"
+      },
+      {
+        "from": "../backend/config.json",
+        "to": "backend/config.json"
+      }
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  }
+}
